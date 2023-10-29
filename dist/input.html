@@ -97,11 +97,94 @@
       </ul>
     </div>
   </aside>
+<!-- accordion -->
+  <div x-show="$el.id===id" id="Accordion" class="ml-96 mr-10 my-10 border border-gray-400" x-data="{selected:1}">
+    <!-- accordion 1 -->
+    <div class=" bg-gray-50 border border-gray-100" x-on:click="selected !== 1? selected = 1:selected = null"
+      x-data="{select:false}">
+      <button class="flex w-full"  x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 1 }">
+        <i class="fa fa-angle-down pt-4 px-4" x-bind:class="{'blue':select}" x-on:click="select = !select"
+          aria-hidden="true"></i>
+        <h3 class="py-4 px-8 text-gray-700" x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 1 }">Section 1</h3>
+      </button>
+    </div>
+    <!-- contenet 1 -->
+    <div class="mx-10 max-h-0 overflow-hidden transition-all duration-300" x-ref="container1"
+      x-bind:style="selected== 1 ? 'max-height: '+ $refs.container1.scrollHeight + 'px;' : ''">
+      <p class="py-6">
+        Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+        ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+        amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+        odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+      </p>
+    </div>
+    <!-- accordion 2 -->
+    <div class="flex bg-gray-50 border border-gray-100" x-on:click="selected !== 2? selected = 2:selected = null"
+    x-data="{select:false}">
+      <button class="flex w-full"  x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 2 }">
+        <i class="fa fa-angle-down pt-4 px-4" x-bind:class="{'blue':select}" x-on:click="select = !select"
+        aria-hidden="true"></i>
+        <h3 class="py-4 px-8 text-gray-700" x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 2 }">Section 2</h3>
+      </button>
+    </div>
+    <!-- content 2 -->
+    <div class="mx-10 max-h-0 overflow-hidden transition-all duration-300" x-ref="container1"
+      x-bind:style="selected== 2 ? 'max-height: '+ $refs.container1.scrollHeight + 'px;' : ''">
+      <p class="py-6">
+        Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+        purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+        velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+        suscipit faucibus urna.
+      </p>
+    </div>
+    <!-- accordion 3 -->
 
-  <!-- accordion -->
-  <div x-show="$el.id===id" id="Accordion" class="ml-96 mr-10 my-10 mt-9">
-    <h1>Accordion</h1>
-    
+    <div class="flex bg-gray-50 border border-gray-100" x-on:click="selected !== 3? selected = 3:selected = null">
+      <button class="flex w-full"  x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 3 }">
+        <i class="fa fa-angle-down pt-4 px-4" x-bind:class="{'blue':select}" x-on:click="select = !select"
+         aria-hidden="true"></i>
+        <h3 class="py-4 px-8 text-gray-700" x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 3 }">Section 3</h3>
+      </button>
+    </div>
+    <!-- content 3 -->
+    <div class="mx-10 max-h-0 overflow-hidden transition-all duration-300" x-ref="container1"
+      x-bind:style="selected== 3 ? 'max-height: '+ $refs.container1.scrollHeight + 'px;' : ''">
+      <p class="py-6">
+        Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+        Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+        ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+        lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+      </p>
+      <ul class="list-outside list-disc ml-8">
+        <li>List item one</li>
+        <li>List item two</li>
+        <li>List item three</li>
+      </ul>
+    </div>
+    <!-- accordion 4 -->
+    <div class="flex bg-gray-50 border border-gray-100" x-on:click="selected !== 4? selected = 4:selected = null">
+      <button class="flex w-full"  x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 4 }">
+        <i class="fa fa-angle-down pt-4 px-4" x-bind:class="{'blue':select}" x-on:click="select = !select"
+        aria-hidden="true"></i>
+        <h3 class="py-4 px-8 text-gray-700" x-on:click="select = !select" :class="{ 'bg-blue-500  && text-white': selected== 4 }">Section 4</h3>
+      </button>
+    </div>
+    <!-- content 4 -->
+    <div class="mx-10 max-h-0 overflow-hidden transition-all duration-300" x-ref="container1"
+      x-bind:style="selected== 4 ? 'max-height: '+ $refs.container1.scrollHeight + 'px;' : ''">
+      <p class="py-6">
+        Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+        et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+        mauris vel est.
+      </p>
+      <p>
+        Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+        inceptos himenaeos.
+      </p>
+    </div>
+
   </div>
 
   <!-- Buttons -->
