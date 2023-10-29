@@ -264,6 +264,212 @@
       </div>
     </div>
   </div>
+
+  <!-- Checkbox and radio -->
+  <div x-show="$el.id===id" id="Checkboxradio" class="ml-96 font-sanst" 
+  x-data="{
+    radio: [
+        {
+            name: 'New York',
+            state: false
+        },
+        {
+            name: 'Paris',
+            state: false
+        },
+        {
+            name: 'London',
+            state: false
+        }
+    ],
+    checkbox: [
+        {
+            name: '2 Star',
+            state: false
+        },
+        {
+            name: '3 Star',
+            state: false
+        },
+        {
+            name: '4 Star',
+            state: false
+        },
+        {
+            name: '5 Star',
+            state: false
+        }
+    ],
+    isChecked: [
+        {
+            name: '2 Double',
+            state: false
+        },
+        {
+            name: '2 Queen',
+            state: false
+        },
+        {
+            name: '1 Queen',
+            state: false
+        },
+        {
+            name: '1 King',
+            state: false
+        }
+    ],
+    handleOnClick(name){
+        this.isChecked= this.isChecked.map(item => {
+
+            if(item.name === name) item.state = !item.state
+            return item
+        })
+    },
+    handleCheckBox(name){
+        this.checkbox= this.checkbox.map(item => {
+
+            if(item.name === name) item.state = !item.state
+            return item
+        })
+    },
+    handleRadio(name){
+        this.radio= this.radio.map(item => {
+
+            item.name === name ? item.state = true : item.state = false 
+            return item
+        })
+    }
+    
+  }">
+  <div>
+    <h1 class="text-xl font-semibold">Checkbox and radio button widgets</h1>
+
+    <!-- Radio -->
+    <h2 class="text-lg font-semibold">Radio Group</h2>
+    <fieldset class="border border-solid border-gray-400 p-3">
+      <legend>Select a Location:</legend>
+      <template x-for="item in radio">
+        <div
+          class="border-2 rounded bg-gray-100 inline p-2 mr-2"
+          @click="handleRadio(item.name)"
+          :class="item.state ? 'bg-blue-500  && text-white' : 'bg-gray-100'"
+        >
+          <input
+            type="radio"
+            name="radio-1"
+            :id="item.name"
+            @click="handleRadio(item.name)"
+            :checked="item.state"
+          />
+          <label for="radio-1" x-text="item.name"></label>
+        </div>
+      </template>
+    </fieldset>
+
+    <!-- Checkbox -->
+    <h2 class="text-lg font-semibold">Checkbox</h2>
+    <fieldset class="border border-solid border-gray-400 p-3">
+      <legend>Hotel Ratings:</legend>
+      <template x-for="item in checkbox">
+        <div
+          class="border-2 rounded bg-gray-100 inline p-2 mr-2"
+          @click="handleCheckBox(item.name)"
+          :class="item.state ? 'bg-blue-500 && text-white' : 'bg-gray-100'"
+        >
+          <input
+            class="border-0 rounded-sm shadow"
+            type="checkbox"
+            name="checkbox-1"
+            id="checkbox-1"
+            :checked="item.state"
+            @click="handleCheckBox(item.name)"
+          />
+          <label for="checkbox-1" x-text="item.name"></label>
+        </div>
+      </template>
+    </fieldset>
+    <!-- Checkbox -->
+
+    <!-- Nested -->
+    <h2 class="text-lg font-semibold">Checkbox nested in label</h2>
+    <fieldset class="border border-solid border-gray-400 p-3">
+      <legend>Bed Type:</legend>
+      <div
+        class="float-left border-2 rounded bg-gray-100 inline p-2 mr-2"
+        @click="handleOnClick('2 Double')"
+        :class="isChecked[0].state ? 'bg-blue-500  && text-white' : 'bg-gray-100'"
+      >
+        <label for="checkbox-nested-1" @click="handleOnClick('2 Double')"
+          >2 Double
+          <input
+            class="float-left border-0 rounded-sm shadow mt-1 mr-1"
+            type="checkbox"
+            name="checkbox-nested-1"
+            id="checkbox-nested-1"
+            @click="handleOnClick('2 Double')"
+            :checked="isChecked[0].state"
+          />
+        </label>
+      </div>
+
+      <div
+        class="float-left border-2 rounded bg-gray-100 inline p-2 mr-2"
+        @click="handleOnClick('2 Queen')"
+        :class="isChecked[1].state ? 'bg-blue-500  && text-white' : 'bg-gray-100'"
+      >
+        <label for="checkbox-nested-2" @click="handleOnClick('2 Queen')"
+          >2 Queen
+          <input
+            class="float-left border-0 rounded-sm shadow mt-1 mr-1"
+            type="checkbox"
+            name="checkbox-nested-2"
+            id="checkbox-nested-2"
+            @click="handleOnClick('2 Queen')"
+            :checked="isChecked[1].state"
+          />
+        </label>
+      </div>
+
+      <div
+        class="float-left border-2 rounded bg-gray-100 inline p-2 mr-2"
+        @click="handleOnClick('1 Queen')"
+        :class="isChecked[2].state ? 'bg-blue-500  && text-white' : 'bg-gray-100'"
+      >
+        <label for="checkbox-nested-3" @click="handleOnClick('1 Queen')"
+          >1 Queen
+          <input
+            class="float-left border-0 rounded-sm shadow mt-1 mr-1"
+            type="checkbox"
+            name="checkbox-nested-3"
+            id="checkbox-nested-3"
+            @click="handleOnClick('1 Queen')"
+            :checked="isChecked[2].state"
+          />
+        </label>
+      </div>
+
+      <div
+        class="float-left border-2 rounded bg-gray-100 inline p-2"
+        @click="handleOnClick('1 King')"
+        :class="isChecked[3].state ? 'bg-blue-500  && text-white' : 'bg-gray-100'"
+      >
+        <label for="checkbox-nested-4" @click="handleOnClick('1 King')"
+          >1 King
+          <input
+            class="float-left border-0 rounded-sm shadow mt-1 mr-1"
+            type="checkbox"
+            name="checkbox-nested-4"
+            id="checkbox-nested-4"
+            @click="handleOnClick('1 King')"
+            :checked="isChecked[3].state"
+          />
+        </label>
+      </div>
+    </fieldset>
+  </div>
+
+  </div>
+
   <!-- Dialog -->
   <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
     <h1>Dialog</h1>
@@ -305,11 +511,6 @@
     <!-- Spinner -->
     <div x-show="$el.id===id" id="Spinner" class="ml-96 mt-9 mr-20 w-96" >
     <h1>Spinner</h1>
-    </div>
-
-    <!-- Checkbox and radio -->
-    <div x-show="$el.id===id" id="Checkboxradio" class="ml-96 font-sanst mt-9" >
-        <h1>checkbox and radio</h1>
     </div>
 
     <!-- Controlgroup -->
