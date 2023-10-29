@@ -905,10 +905,37 @@
   
 
 
-    <!-- Tool Tip -->
-    <div x-show="$el.id===id" id="Tooltip" class="ml-96 mt-9 mr-20 w-96">
-   <h1>Tooltip</h1>
-    </div>
+     <!-- Tool Tip -->
+     <div x-show="$el.id===id" id="Tooltip" class="ml-96 mt-9 mr-20 w-96">
+        <div>
+        <div x-data="{tooltip:false}" class="mt-4">
+        <p><a href="#" x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false" class="underline">Tooltips</a> can be attached to any element. When you hover
+        the element with your mouse, the title attribute is displayed in a little box next to the element, just like a native tooltip.</p>
+        <div x-show="tooltip" class="z-50 absolute bg-white border border-gray-300 rounded p-4 mt-1 shadow-md">
+          That&apos;s what this widget is
+        </div>
+        </div>
+    
+        <div x-data="{tooltip:false}" class="mt-4">
+          <p>But as it&apos;s not a native tooltip, it can be styled. Any themes built with
+          <a href="http://jqueryui.com/themeroller/" x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false" class="underline">ThemeRoller</a>
+        will also style tooltips accordingly.</p>
+        <div x-show="tooltip" class="z-50 absolute bg-white border border-gray-300 rounded p-4 mt-1 shadow-md">
+          ThemeRoller: jQuery UI&apos;s theme builder application
+        </div>
+        </div>
+        <p>Tooltips are also useful for form elements, to show some additional information in the context of each field.</p>
+    
+            <div x-data="{tooltip: false}" class="mt-4">
+            <label for="age">Your age:</label>
+            <input id="age" class="border border-gray-400 px-2 py-1" x-on:mouseenter="tooltip = true" x-on:mouseleave="tooltip = false">
+            <div x-show="tooltip" class="z-50 absolute bg-white border border-gray-300 rounded p-4 mt-1 shadow-md">
+              We ask for your age only for statistical purposes.
+            </div>
+            <p mt-10>Hover the field to see the tooltip.</p>
+            </div>
+            </div>
+            </div>
 
      <!-- Menu  -->
      <div x-show="$el.id===id" id="Menu" class="ml-96 mt-9 mr-20 w-96">
