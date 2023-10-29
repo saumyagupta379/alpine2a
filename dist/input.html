@@ -470,6 +470,179 @@
 
   </div>
 
+    <!-- Controlgroup -->
+    <div x-show="$el.id==id" id="Controlgroup" class="ml-96 font-sanst"
+    x-data="{
+    clicked: false,
+    clicked2: false,
+    checked: false,
+
+    vclicked: false,
+    vclicked2: false,
+    vchecked: false
+  }"
+  >
+    <fieldset class="border border-solid border-gray-300 p-3 w-fit">
+      <legend>Rental Car</legend>
+      <div class="mr-0">
+        <select id="car-type" class="p-2 cursor-pointer bg-gray-200">
+          <option>Compact car</option>
+          <option>Midsize car</option>
+          <option>Full size car</option>
+          <option>SUV</option>
+          <option>Luxury</option>
+          <option>Truck</option>
+          <option>Van</option>
+        </select>
+        <div
+          class="inline px-3 py-2 cursor-pointer"
+          :class="clicked ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="clicked = true; clicked2=false"
+        >
+          <input
+            type="radio"
+            name="transmission"
+            id="transmission-standard"
+            class="cursor-pointer"
+            @click="clicked = true; clicked2=false"
+          />
+          <label for="transmission-standard" class="cursor-pointer"
+            >Standard</label
+          >
+        </div>
+        <div
+          class="inline bg-gray-200 px-3 py-2 cursor-pointer"
+          :class="clicked2 ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="clicked = false; clicked2=true"
+        >
+          <input
+            type="radio"
+            name="transmission"
+            id="transmission-automatic"
+            class="cursor-pointer"
+            @click="clicked = false; clicked2=trues"
+          />
+          <label for="transmission-automatic" class="cursor-pointer"
+            >Automatic</label
+          >
+        </div>
+
+        <div
+          class="inline px-3 py-2 cursor-pointer"
+          :class="checked ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="checked = !checked"
+        >
+          <input
+            type="checkbox"
+            name="insurance"
+            id="insurance"
+            class="mr-1 cursor-pointer"
+            @click="checked = !checked"
+          />
+          <label for="insurance" class="cursor-pointer">Insurance</label>
+        </div>
+        <br />
+        <div class="inline">
+          <label
+            for="horizontal-spinner"
+            class="ui-controlgroup-label bg-gray-200 px-3 py-2"
+            ># of cars</label
+          >
+          <input
+            id="horizontal-spinner"
+            type="number"
+            class="w-35 p-1 border border-gray-300 border-solid"
+          />
+        </div>
+        <button class="inline bg-gray-200 px-3 py-2 active:bg-sky-500">
+          Book Now!
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset class="border border-solid border-gray-300 p-3 w-fit">
+      <legend>Rental Car</legend>
+      <div class="mr-0">
+        <select class="p-2 cursor-pointer bg-gray-200 w-125">
+          <option>Compact car</option>
+          <option>Midsize car</option>
+          <option>Full size car</option>
+          <option>SUV</option>
+          <option>Luxury</option>
+          <option>Truck</option>
+          <option>Van</option>
+        </select>
+        <br />
+        <div
+          class="inline-block w-32 px-3 py-2 cursor-pointer"
+          :class="vclicked ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="vclicked = true; vclicked2=false"
+        >
+          <input
+            type="radio"
+            name="transmission1"
+            id="transmission-standard1"
+            class="cursor-pointer"
+            @click="vclicked = true; vclicked2=false"
+          />
+          <label for="transmission-standard1" class="cursor-pointer"
+            >Standard</label
+          >
+        </div>
+        <br />
+        <div
+          class="inline-block w-32 bg-gray-200 px-3 py-2 cursor-pointer"
+          :class="vclicked2 ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="vclicked = false; vclicked2=true"
+        >
+          <input
+            type="radio"
+            name="transmission1"
+            id="transmission-automatic1"
+            class="cursor-pointer"
+            @click="vclicked = false; vclicked2=trues"
+          />
+          <label for="transmission-automatic1" class="cursor-pointer"
+            >Automatic</label
+          >
+        </div>
+        <br />
+        <div
+          class="inline-block w-32 px-3 py-2 cursor-pointer"
+          :class="vchecked ? 'bg-sky-500 text-white' : 'bg-gray-200'"
+          @click="vchecked = !vchecked"
+        >
+          <input
+            type="checkbox"
+            name="insurance1"
+            id="insurance1"
+            class="mr-1 cursor-pointer"
+            @click="vchecked = !vchecked"
+          />
+          <label for="insurance1" class="cursor-pointer">Insurance</label>
+        </div>
+        <br />
+        <div class="inline-block w-32">
+          <label
+            for="horizontal-spinner1"
+            class="w-32 ui-controlgroup-label bg-gray-200 pl-4 pr-12 py-3"
+            ># of cars</label
+          >
+          <br />
+          <input
+            id="horizontal-spinner1"
+            type="number"
+            class="w-32 p-1 border border-gray-300 border-solid"
+          />
+        </div>
+        <br />
+        <button class="w-32 bg-gray-200 px-3 py-2 active:bg-sky-500">
+          Book Now!
+        </button>
+      </div>
+    </fieldset>
+    </div>
+
   <!-- Dialog -->
   <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
     <h1>Dialog</h1>
@@ -511,11 +684,6 @@
     <!-- Spinner -->
     <div x-show="$el.id===id" id="Spinner" class="ml-96 mt-9 mr-20 w-96" >
     <h1>Spinner</h1>
-    </div>
-
-    <!-- Controlgroup -->
-    <div x-show="$el.id==id" id="Controlgroup" class="ml-96 font-sanst mt-9">
-        <h1>Control group</h1>
     </div>
     
     <!-- Date Picker -->
