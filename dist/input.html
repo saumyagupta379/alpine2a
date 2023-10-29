@@ -670,6 +670,151 @@
         </div>
         </div>
 
+    <!-- Select Menu -->
+    <div x-show="$el.id===id" id="Selectmenu" class="ml-96 mt-9 mr-20 w-96"> 
+        <!-- Select a speed -->
+                <div x-data="{
+                  select:'Medium',
+                  isOpen: false,
+                  selectMenu : [
+                  'Slower',
+                  'Slow',
+                  'Medium',
+                  'Fast',
+                  'Faster'
+                  ],
+                  handleOnClick4(item){
+                    this.select=item,
+                    this.isOpen=false
+                  }
+                }">
+                  <label for="speed">Select a speed</label><br>
+                  <button 
+                          @click="isOpen = !isOpen" 
+                          @keydown.escape="isOpen = false" 
+                          class="bg-gray-300 border border-gray-400 px-2 py-1 w-48" x-text="select" 
+                  >
+                  </button>
+                  <ul x-show="isOpen"
+                      @click.away="isOpen = false"
+                      class="font-normal bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20">
+                      <template x-for="item in selectMenu">
+                    <a href=""><li class="px-3 py-3  hover:bg-blue-500 hover:text-white" x-on:click.prevent="handleOnClick4(item) " x-text="item">
+                    </li></a>
+                  </template>
+                  </ul>
+                </div>
+                <!-- Select a file -->
+        
+                <div>
+                  <div x-data="{
+                    select:'jQuery.js',
+                    isOpen: false,
+                    selectFile : [
+                    'jQuery.js',
+                    'ui.jQuery.js'
+                    ],
+                    selectFile2:[
+                    'Some unknown file',
+                    'Some other file with a very long option text'
+                    ],
+                    handleOnClickFile(item){
+                      this.select=item,
+                      this.isOpen=false
+                    }
+                  }">
+                    <label for="speed">Select a File</label><br>
+                    <button 
+                            @click="isOpen = !isOpen" 
+                            @keydown.escape="isOpen = false" 
+                            class="bg-gray-300 border border-gray-400 px-2 py-1 w-48" x-text="select" 
+                    >
+                    </button>
+                    <ul x-show="isOpen"
+                        @click.away="isOpen = false"
+                        class="font-normal bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20">
+                        <optgroup label="Scripts" class="px-3 py-3 "></optgroup>
+                        <template x-for="item in selectFile"> 
+                      <a href=""><li class="px-3 py-3  hover:bg-blue-500 hover:text-white" x-on:click.prevent="handleOnClickFile(item) " x-text="item">
+                      </li></a>
+                     
+                    </template>
+                    <optgroup label="Some other files" class="px-3 py-3 "></optgroup>
+                    <template x-for="item in selectFile2">
+                      <a href=""><li class="px-3 py-3  hover:bg-blue-500 hover:text-white" x-on:click.prevent="handleOnClickFile2(item) " x-text="item">
+                      </li></a>
+                    </template>
+                    </ul>
+                  </div>
+                </div>
+  
+                <!-- Select a number -->
+                <div>
+                  <div x-data="{
+                    select:'2',
+                    isOpen: false,
+                    selectFile : [
+                    '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','19'
+                    ],
+                    handleOnClickFile(item){
+                      this.select=item,
+                      this.isOpen=false
+                    }
+                  }">
+                    <label for="speed">Select a number</label><br>
+                    <button 
+                            @click="isOpen = !isOpen" 
+                            @keydown.escape="isOpen = false" 
+                            class="bg-gray-300 border border-gray-400 px-2 py-1 w-48" x-text="select" 
+                    >
+                    </button>
+                    <ul x-show="isOpen"
+                        @click.away="isOpen = false"
+                        class="font-normal bg-white shadow  rounded w-48 border mt-2 py-1 right-0 z-20 overflow-y-scroll h-44">
+                        <template x-for="item in selectFile"> 
+                      <a href=""><li class="px-3 py-3  hover:bg-blue-500 hover:text-white" x-on:click.prevent="handleOnClickFile(item) " x-text="item">
+                      </li></a>
+                    </template>
+                    </ul>
+                  </div>
+                </div>
+                <!-- Select a title -->
+                <div>
+                  <div x-data="{
+                    select:'Please pick one',
+                    isOpen: false,
+                    selectFile : [
+                    'Mr.',
+                    'Mrs.',
+                    'Dr.',
+                    'Prof.',
+                    'Other'
+                   ],
+                    handleOnClickFile(item){
+                      this.select=item,
+                      this.isOpen=false
+                    }
+                  }">
+                    <label for="speed">Select a title</label><br>
+                    <button 
+                            @click="isOpen = !isOpen" 
+                            @keydown.escape="isOpen = false" 
+                            class="bg-gray-300 border border-gray-400 px-2 py-1 w-48" x-text="select" 
+                    >
+                    </button>
+                    <ul x-show="isOpen"
+                        @click.away="isOpen = false"
+                        class="font-normal bg-white shadow overflow-hidden rounded w-48 border mt-2 py-1 right-0 z-20">
+                        <li disabled selected class="px-3 py-3 text-gray-300">Please pick one</li>
+                        <template x-for="item in selectFile"> 
+                      <a href=""><li class="px-3 py-3  hover:bg-blue-500 hover:text-white" x-on:click.prevent="handleOnClickFile(item) " x-text="item">
+                      </li></a>
+                    </template>
+                    </ul>
+                  </div>
+                </div>
+      </div>
+
     <!-- Slider -->
     <div id="Slider" x-show="$el.id===id" class="ml-96 mt-9 mr-20">
      <h1>Slider</h1>
@@ -691,11 +836,6 @@
     
        <h1>Menu</h1>
       
-    </div>
-
-    <!-- Select Menu -->
-    <div x-show="$el.id===id" id="Selectmenu" class="ml-96 mt-9 mr-20 w-96"> 
-     <h1>Select Menu</h1>
     </div>
 
     <!-- Spinner -->
