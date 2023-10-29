@@ -643,9 +643,16 @@
     </fieldset>
     </div>
 
-  <!-- Dialog -->
-  <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
-    <h1>Dialog</h1>
+ <!-- Dialog -->
+ <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
+    <div x-data="{ open: true }">
+      <div :class="{'showpopup': open, 'hidden': !open}" class="p-12 bg-white relative border-2 border-gray-100">
+        This is the default dialog which is useful for displaying information. The dialog window can be moved, resized
+        and closed with the 'x' icon.
+        <button x-bind:class="{'hidden': !open}" class="close absolute top-3 right-3 bg-gray-100"
+          @click="open = false">X</button>
+      </div>
+    </div>
   </div>
 
     <!-- Progress bar -->
