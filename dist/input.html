@@ -1,11 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alpine Js Widgets</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widgets</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script>
+    function initial(){
+      return {
+        id: '',
+        wid: [
+          { name: 'Accordion', state: false },
+          { name: 'Autocomplete', state: false },
+          { name: 'Button', state: false },
+          { name: 'Checkboxradio', state: false },
+          { name: 'Controlgroup', state: false },
+          { name: 'Datepicker', state: false },
+          { name: 'Dialog', state: false },
+          { name: 'Menu', state: false },
+          { name: 'Progressbar', state: false },
+          { name: 'Selectmenu', state: false },
+          { name: 'Slider', state: false },
+          { name: 'Spinner', state: false },
+          { name: 'Tabs', state: false },
+          { name: 'Tooltip', state: false }
+        ],
+        handleOnClick(name) {
+          this.id = name;
+          this.wid = this.wid.map(widget => {
+            if (widget.name === name) {
+              widget.state = true;
+            } else {
+              widget.state = false;
+            }
+            return widget;
+          })
+        }
+      }
+    }
+
+    function initial1(){
+
+      return {
+        id: '',
+        checkboxDep: [
+          {
+            name: "New York",
+            state: false
+          },
+          {
+            name: "Paris",
+            state: false
+          },
+          { name: "London", state: false }
+        ],
+        handleOnClick1(name) {
+          this.id = name;
+          this.checkboxDep = this.checkboxDep.map(checkpoint => {
+            if (checkpoint.name === name) {
+              checkpoint.state = true;
+            } else {
+              checkpoint.state = false;
+            }
+            return checkpoint;
+          })
+        }
+
+      }
+
+    }
+  </script>
 </head>
-<body>
-    <h1>Alipne Js Widgets</h1>
+
+<body x-data="initial()" class="font-sanst">
+  <aside id="sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50">
+      <ul class="space-y-2 font-medium list-outside list-disc pl-5 marker:text-gray-400 marker:w-6">
+        <h1 class="py-2 bg-gray-200 pl-3 font-bold text-xl">Widgets</h1>
+        <template x-for="widget in wid">
+          <div>
+            <li x-on:click="handleOnClick(widget.name)">
+              <a href="#" class="flex items-center p-2 hover:underline">
+                <span class="ml-3  text-gray-700" x-text="widget.name"></span>
+              </a>
+            </li>
+          </div>
+        </template>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- accordion -->
+  <div x-show="$el.id===id" id="Accordion" class="ml-96 mr-10 my-10 mt-9">
+    <h1>Accordion</h1>
+    
+  </div>
+
+  <!-- Buttons -->
+  <div x-show="$el.id===id" id="Button" class="ml-96 mt-9">
+    <h1>Button</h1>
+  </div>
+
+  <!-- Dialog -->
+  <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
+    <h1>Dialog</h1>
+  </div>
+
+    <!-- Progress bar -->
+    <div x-show="$el.id===id" id="Progressbar" class="ml-96 mt-9 mr-20">
+    <h1>Progress Bar</h1>
+    </div>
+
+    <!-- Slider -->
+    <div id="Slider" x-show="$el.id===id" class="ml-96 mt-9 mr-20">
+     <h1>Slider</h1>
+    </div>
+
+    <!-- Tabs -->
+    <div x-show="$el.id===id" id="Tabs" class="ml-96 mt-9 mr-20 w-96">
+      <h1>Tabs</h1>
+    </div>
+
+    <!-- Auto complete -->
+    <div x-show="$el.id===id" id="Autocomplete" class="ml-96 mt-9 mr-20 w-96">
+   <h1>Auto Complete</h1>
+    </div>
+
+    <!-- Tool Tip -->
+    <div x-show="$el.id===id" id="Tooltip" class="ml-96 mt-9 mr-20 w-96">
+   <h1>Tooltip</h1>
+    </div>
+
+     <!-- Menu  -->
+     <div x-show="$el.id===id" id="Menu" class="ml-96 mt-9 mr-20 w-96">
+    
+       <h1>Menu</h1>
+      
+    </div>
+
+    <!-- Select Menu -->
+    <div x-show="$el.id===id" id="Selectmenu" class="ml-96 mt-9 mr-20 w-96"> 
+     <h1>Select Menu</h1>
+    </div>
+
+    <!-- Spinner -->
+    <div x-show="$el.id===id" id="Spinner" class="ml-96 mt-9 mr-20 w-96" >
+    <h1>Spinner</h1>
+    </div>
+
+    <!-- Checkbox and radio -->
+    <div x-show="$el.id===id" id="Checkboxradio" class="ml-96 font-sanst mt-9" >
+        <h1>checkbox and radio</h1>
+    </div>
+
+    <!-- Controlgroup -->
+    <div x-show="$el.id==id" id="Controlgroup" class="ml-96 font-sanst mt-9">
+        <h1>Control group</h1>
+    </div>
+    
+    <!-- Date Picker -->
+    <div x-show="$el.id==id" id="Datepicker" class="min-h-screen antialiased sans-serif ml-96 mt-9 font-sanst">
+        <h1>Date Picker</h1>
+        </div>
+      
 </body>
 </html>
