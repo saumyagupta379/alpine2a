@@ -827,6 +827,65 @@
         
       </div>
 
+       <!-- Spinner -->
+    <div x-show="$el.id===id" id="Spinner" class="ml-96 mt-9 mr-20 w-96" 
+    x-data="{
+      isDisabled: false,
+      inputType: 'number',
+      inputVal: '',
+      isClicked: false
+    }">
+      <div class="spinner ml-5 mt-5">
+        Select a value:
+        <input
+          class="border-2 border-gray-400 rounded"
+          :type="inputType"
+          name=""
+          id=""
+          :disabled="isDisabled"
+          x-model="inputVal"
+        />
+      </div>
+      <div class="mt-2 ml-5">
+        <button
+          type="button"
+          class="border-2 p-2 rounded"
+          :class="isClicked ? 'bg-blue-500 text-white' : 'bg-gray-100'"
+          id="disable"
+          @click="isClicked = !isClicked;  isDisabled = !isDisabled"
+        >
+          Toggle disable/enable
+        </button>
+        <button
+          type="button"
+          class="border-2 p-2 rounded bg-gray-100"
+          id="destroy"
+          @click="inputType==='number' ? inputType='text' : inputType='number'"
+        >
+          Toggle widget
+        </button>
+      </div>
+
+      <div class="mt-2 ml-5">
+        <button
+          type="button"
+          class="border-2 p-2 rounded bg-gray-100"
+          id="getvalue"
+          @click="inputVal==='' ? alert(null) : alert(inputVal)"
+        >
+          Get value
+        </button>
+        <button
+          type="button"
+          class="border-2 p-2 rounded bg-gray-100"
+          id="setvalue"
+          @click="inputVal=5"
+        >
+          Set value to 5
+        </button>
+      </div>
+    </div>
+
     <!-- Tabs -->
     <div x-show="$el.id===id" id="Tabs" class="ml-96 mt-9 mr-20 w-96">
       <h1>Tabs</h1>
@@ -844,12 +903,7 @@
        <h1>Menu</h1>
       
     </div>
-
-    <!-- Spinner -->
-    <div x-show="$el.id===id" id="Spinner" class="ml-96 mt-9 mr-20 w-96" >
-    <h1>Spinner</h1>
-    </div>
-    
+  
     <!-- Date Picker -->
     <div x-show="$el.id==id" id="Datepicker" class="min-h-screen antialiased sans-serif ml-96 mt-9 font-sanst">
         <h1>Date Picker</h1>
