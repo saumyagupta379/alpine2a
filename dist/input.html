@@ -10,7 +10,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+<style>
+        .blue {
+          background-color: blue;
+          color: white;
+        }
+</style>
   <script>
     function initial(){
       return {
@@ -242,10 +247,23 @@
    </div>
 
   <!-- Buttons -->
-  <div x-show="$el.id===id" id="Button" class="ml-96 mt-9">
-    <h1>Button</h1>
+  <div x-show="$el.id===id" id="Button" class="ml-96">
+    <h1 class="font-bold text-4xl my-4">Widget Buttons</h1>
+    <div class="flex">
+      <div x-data="{selected: false}" class="mx-4">
+        <button class="bg-gray-100 px-4 py-3 text-gray-700 border-2 border-gray-200  rounded-md"
+          x-bind:class="{'blue':selected}" x-on:click="selected = !selected">A button element</button>
+      </div>
+      <div x-data="{selected: false}" class="mx-4">
+        <button class="bg-gray-100 px-4 py-3 text-gray-700 border-2 border-gray-200 rounded-md"
+          x-bind:class="{'blue':selected}" x-on:click="selected = !selected">A submit button</button>
+      </div>
+      <div x-data="{selected: false}" class="mx-4">
+        <button class="bg-gray-100 px-4 py-3 text-gray-700 border-2 border-gray-200 rounded-md"
+          x-bind:class="{'blue':selected}" x-on:click="selected = !selected">An anchor</button>
+      </div>
+    </div>
   </div>
-
   <!-- Dialog -->
   <div x-show="$el.id===id" id="Dialog" class="ml-96 mt-9 mr-20 w-96">
     <h1>Dialog</h1>
