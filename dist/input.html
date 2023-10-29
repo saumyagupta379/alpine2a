@@ -655,10 +655,20 @@
     </div>
   </div>
 
-    <!-- Progress bar -->
-    <div x-show="$el.id===id" id="Progressbar" class="ml-96 mt-9 mr-20">
-    <h1>Progress Bar</h1>
-    </div>
+     <!-- Progress bar -->
+     <div x-show="$el.id===id" id="Progressbar" class="ml-96 mt-9 mr-20">
+        <div x-data="{
+              progress: 0,
+              increment (){
+                this.progress++
+              }
+            }">
+          <div class="progress mt-6 bg-gray-100 w-96 h-3">
+            <div class="progress-inner bg-gray-300 h-3" x-bind:style="`width: ${progress}%;`"></div>
+          </div>
+          <button x-on:click="increment" class="bg-gray-800 text-white px-4 py-2 mt-3">Increment</button>
+        </div>
+        </div>
 
     <!-- Slider -->
     <div id="Slider" x-show="$el.id===id" class="ml-96 mt-9 mr-20">
