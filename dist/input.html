@@ -815,10 +815,17 @@
                 </div>
       </div>
 
-    <!-- Slider -->
-    <div id="Slider" x-show="$el.id===id" class="ml-96 mt-9 mr-20">
-     <h1>Slider</h1>
-    </div>
+     <!-- Slider -->
+     <div id="Slider" x-show="$el.id===id" class="ml-96 mt-9 mr-20">
+        <div x-data="{ 
+          rangeValue:0,
+          selected : false
+        }">
+          <!-- <input x-bind:class="{'blue':selected}" x-on:click="selected =!selected" type="range" class="appearance-none w-48 h-3 bg-gray-50  border-1 border-gray-200 overflow-hidden cursor-pointer  accent-blue-500"/> -->
+          <input x-model="rangeValue" type="range" min="0" max="100" step="1" class="w-full h-4 accent-blue-500 " />
+        </div>
+        
+      </div>
 
     <!-- Tabs -->
     <div x-show="$el.id===id" id="Tabs" class="ml-96 mt-9 mr-20 w-96">
