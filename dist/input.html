@@ -187,6 +187,60 @@
 
   </div>
 
+   <!-- Auto complete -->
+   <div x-show="$el.id===id" id="Autocomplete" class="ml-96 mt-9 mr-20 w-96" 
+   x-data="{
+     hidelist:true,
+     search:'',
+     items : [
+     'ActionScript',
+     'AppleScript',
+     'Asp',
+     'BASIC',
+     'C',
+     'C++',
+     'Clojure',
+     'COBOL',
+     'ColdFusion',
+     'Erlang',
+     'Fortran',
+     'Groovy',
+     'Haskell',
+     'Java',
+     'JavaScript',
+     'Lisp',
+     'Perl',
+     'PHP',
+     'Python',
+     'Ruby',
+     'Scala',
+     'Scheme'],
+     get filteredItems(){
+       return this.items.filter(
+         item => item.startsWith(this.search)
+       )
+     },
+     validate(event){
+       this.hidelist = false
+     },
+     handleOnClick3(item){
+       this.search= item
+       this.hidelist = true
+     }
+   }">
+     <div>
+     <div>
+       <label for="tags">Tags: </label>
+       <input id="tags" class="border border-gray-300 rounded-sm p-2" x-model="search"  x-on:input="validate($event)"/>
+     </div>
+     <ul class="border border-gray-400 mt-4 w-80" :class="{ 'hidden': hidelist }">
+       <template x-for="item in filteredItems">
+         <li class="px-2 py-2 hover:bg-blue-500 hover:text-white" x-text="item" x-on:click="handleOnClick3(item)"></li>
+       </template>
+     </ul>
+     </div>
+   </div>
+
   <!-- Buttons -->
   <div x-show="$el.id===id" id="Button" class="ml-96 mt-9">
     <h1>Button</h1>
@@ -212,10 +266,6 @@
       <h1>Tabs</h1>
     </div>
 
-    <!-- Auto complete -->
-    <div x-show="$el.id===id" id="Autocomplete" class="ml-96 mt-9 mr-20 w-96">
-   <h1>Auto Complete</h1>
-    </div>
 
     <!-- Tool Tip -->
     <div x-show="$el.id===id" id="Tooltip" class="ml-96 mt-9 mr-20 w-96">
